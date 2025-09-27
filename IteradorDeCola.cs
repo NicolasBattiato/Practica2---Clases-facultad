@@ -1,8 +1,8 @@
 ﻿/*
  * Creado por SharpDevelop.
  * Usuario: nicol
- * Fecha: 14/9/2025
- * Hora: 00:13
+ * Fecha: 26/9/2025
+ * Hora: 19:37
  * 
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
@@ -11,14 +11,14 @@ using System;
 namespace Practica_2
 {
 	/// <summary>
-	/// Description of IteradorDeConjunto.
+	/// Description of IteradorDeCola.
 	/// </summary>
-	public class IteradorDeConjunto: Iterador
+	public class IteradorDeCola: Iterador
 	{
 		private int indice;
-		private Conjunto c;
-			
-		public IteradorDeConjunto(Conjunto c)
+		private Cola c;
+		
+		public IteradorDeCola(Cola c)
 		{
 			this.c = c;
 			this.primero();
@@ -43,7 +43,6 @@ namespace Practica_2
         {
             this.indice++;
         }
-		
 		
 	}
 }

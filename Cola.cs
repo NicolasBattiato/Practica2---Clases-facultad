@@ -20,11 +20,20 @@ namespace Practica_2
 		private List<IComparable> numeros;
 		private int indice;
 		
+		public Iterador crearIterador()
+        {
+            return new IteradorDeCola(this);
+        }
 		
 		public Cola()
 		{
 			this.numeros = new List<IComparable>();
 			primero();
+		}
+		
+		public List<IComparable> getElementos()
+		{
+		    return this.numeros;
 		}
 		
 		public int cuantos()

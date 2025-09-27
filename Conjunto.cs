@@ -8,25 +8,31 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Practica_2
 {
 	/// <summary>
 	/// Description of Conjunto.
 	/// </summary>
-	public class Conjunto : IColeccionable, Iterable
+	public class Conjunto : IColeccionable, Iterador
 	{
 		List<string> conjunto = new List<string>();
 		private int indice;
 		
 		public Iterador crearIterador(){
 			
-			return new IteradorDeConjunto();
+			return new IteradorDeConjunto(this);
 		}
 		
 		public Conjunto()
 		{
 			conjunto = new List<string>();
+		}
+		
+		public List<IComparable> getElementos()
+		{
+		    return this.conjunto.Cast<IComparable>().ToList();
 		}
 		
 		public void agregar(string elem){
@@ -82,7 +88,7 @@ namespace Practica_2
 		
 		public bool contiene(IComparable c)
 		{
-			
+			return true;
 		}
 		
 		public void primero(){
@@ -105,10 +111,10 @@ namespace Practica_2
 			
 			return this.indice >= this.conjunto.Count;
 		}
-		
+		// REVISAR
 		public IComparable actual()
-    	{
-			return this.conjunto[indice];
-    	} 
+		{
+		    return (IComparable)this.conjunto[indice];
+		}
 	}
 }

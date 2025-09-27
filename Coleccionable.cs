@@ -16,7 +16,6 @@ namespace Practica_2
 	/// </summary>
 	public interface IColeccionable
 	{
-		
 		int cuantos();
 		IComparable minimo();
 		IComparable maximo();

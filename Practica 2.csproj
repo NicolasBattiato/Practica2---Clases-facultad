@@ -61,7 +61,9 @@
     <Compile Include="EstrategiaPorPromedio.cs" />
     <Compile Include="Iterable.cs" />
     <Compile Include="Iterador.cs" />
+    <Compile Include="IteradorDeCola.cs" />
     <Compile Include="IteradorDeConjunto.cs" />
+    <Compile Include="IteradorDePila.cs" />
     <Compile Include="Numero.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Pila.cs" />

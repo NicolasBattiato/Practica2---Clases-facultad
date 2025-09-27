@@ -72,23 +72,6 @@ namespace Practica_2
 		
 		// ---------------------------------------------------------------
 		
-		public override bool sosIgual(IComparable c){
-			
-			return legajo == ((Alumno)c).getLegajo();
-			
-		}
-		
-		public override bool sosMenor(IComparable c){
-			
-			return legajo < ((Alumno)c).getLegajo();
-		}
-		
-		public override bool sosMayor(IComparable c){
-			
-			return legajo > ((Alumno)c).getLegajo();
-			
-		}
-		
 		override public string ToString() { return base.ToString() + string.Format("[Alumno: Legajo={0}, Promedio={1}]", legajo, promedio); }
 		
 		

@@ -15,6 +15,7 @@ namespace Practica_2
 	{
 		public static void Main(string[] args)
 		{
+			/*
 			Numero numero = new Numero(23);
 			Numero numero2 = new Numero(34);
 			Numero numero3 = new Numero(45);
@@ -90,6 +91,7 @@ namespace Practica_2
 			informar(pilaM);
 			informar(colaM);
 			informar(multiple);
+			*/
 			
 			// ver por que se repite informar(multiple) |^|
 			
@@ -120,13 +122,13 @@ namespace Practica_2
 			
 			Pila pilaE = new Pila();
 			llenarAlumnos(pilaE);
-			cambiarEstrategia(pilaE, EstrategiaPorNombre);
+			cambiarEstrategia(pilaE, new EstrategiaPorNombre());
 			informar(pilaE);
-			cambiarEstrategia(pilaE, EstrategiaPorDni);
+			cambiarEstrategia(pilaE, new EstrategiaPorDni());
 			informar(pilaE);
-			cambiarEstrategia(pila, EstrategiaPorLegajo);
+			cambiarEstrategia(pilaE, new EstrategiaPorLegajo());
 			informar(pilaE);
-			cambiarEstrategia(pilaE, EstrategiaPorPromedio);
+			cambiarEstrategia(pilaE, new EstrategiaPorPromedio());
 			informar(pilaE);
 			
 			
@@ -155,16 +157,18 @@ namespace Practica_2
             Console.WriteLine(c.minimo());
             Console.WriteLine(c.maximo());
 			
-			Console.WriteLine("Ingrese un numero: ");
-			int numero_ingresado = int.Parse(Console.ReadLine());
-			Numero numero = new Numero(numero_ingresado);
+			//Console.WriteLine("Ingrese un numero: ");
+			//int numero_ingresado = int.Parse(Console.ReadLine());
+			//Numero numero = new Numero(numero_ingresado);
 			
-			if(c.contiene(numero)){
-				Console.WriteLine("El elemento leido esta en la coleccion");
-			
-			}else{
-				Console.WriteLine("El elemento leido no esta en la coleccion");
-			}
+			Console.WriteLine("Ingrese un legajo para ver si esta en la coleccion:");
+            IComparable comparable = new Alumno("",0, int.Parse(Console.ReadLine()),0);
+            if (c.contiene(comparable)) {
+                Console.WriteLine("El elemento leído está en la colección");
+            }
+            else {
+                Console.WriteLine("El elemento leído no está en la colección");
+            }
 		}
 		
 		public static void llenarAlumnos(IColeccionable c){
@@ -209,11 +213,13 @@ namespace Practica_2
 		
 		public static void cambiarEstrategia(IColeccionable col, EstrategiaDeComparacion estrategia){
 			
-			
-			foreach(IColeccionable c in col){
-				((Alumno)c).setEstrategia(estrategia);
-				
-			}
+			Iterador iterador = col.crearIterador();
+		    iterador.primero();
+		    while (!iterador.fin())
+		    {
+		        ((Alumno)iterador.actual()).setEstrategia(estrategia);
+		        iterador.siguiente();
+		    }
 		}
 		
 		
