@@ -25,6 +25,10 @@ namespace Practica_2
 			this.cola = c;
 		}
 		
+		public Iterador crearIterador(){
+			throw new NotImplementedException();
+		}
+		
 		// Implementar funciones de Coleccionables
 		
 		public int cuantos(){

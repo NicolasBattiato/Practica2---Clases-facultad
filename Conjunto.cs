@@ -15,9 +15,10 @@ namespace Practica_2
 	/// <summary>
 	/// Description of Conjunto.
 	/// </summary>
-	public class Conjunto : IColeccionable, Iterador
+	public class Conjunto : IColeccionable, Iterable
 	{
-		List<string> conjunto = new List<string>();
+		//List<string> conjunto = new List<string>();
+		List<IComparable> conjunto;
 		private int indice;
 		
 		public Iterador crearIterador(){
@@ -27,7 +28,8 @@ namespace Practica_2
 		
 		public Conjunto()
 		{
-			conjunto = new List<string>();
+			
+			conjunto = new List<IComparable>();
 		}
 		
 		public List<IComparable> getElementos()
@@ -35,22 +37,33 @@ namespace Practica_2
 		    return this.conjunto.Cast<IComparable>().ToList();
 		}
 		
-		public void agregar(string elem){
+		public void agregar(IComparable c){
 			
-			if (!conjunto.Contains(elem)){
+			if (!pertenece(c)){
 				
-				conjunto.Add(elem);
+				conjunto.Add(c);
 			}
 		}
 		
-		public bool pertenece(string elem){
+		public bool pertenece(IComparable c){
 			
-			return conjunto.Contains(elem);
+			for(int i = 0; i < this.conjunto.Count; i++){
+				if (this.conjunto[i].sosIgual(c)){
+					return true;
+				}
+			}
+			return false;
+			
 		}
 		
 		public int cuantos(){
 			
 			return conjunto.Count;
+		}
+		
+		public bool contiene(IComparable c){
+			
+			return pertenece(c);
 		}
 		
 		public IComparable minimo()
@@ -80,41 +93,6 @@ namespace Practica_2
 			}
 			return maximo;
 		}
-		
-		public void agregar(IComparable c)
-		{
-			
-		}
-		
-		public bool contiene(IComparable c)
-		{
-			return true;
-		}
-		
-		public void primero(){
-			
-			if (this.conjunto.Count > 0)
-        	{
-            	this.indice = 0;
-        	}
-		}
-		
-		public void siguiente(){
-			
-			if (this.indice < this.conjunto.Count - 1)
-        	{
-            	this.indice++;
-        	}
-		}
-		
-		public bool fin(){
-			
-			return this.indice >= this.conjunto.Count;
-		}
-		// REVISAR
-		public IComparable actual()
-		{
-		    return (IComparable)this.conjunto[indice];
-		}
+
 	}
 }

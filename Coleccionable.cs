@@ -14,7 +14,7 @@ namespace Practica_2
 	/// <summary>
 	/// Description of Coleccionable.
 	/// </summary>
-	public interface IColeccionable
+	public interface IColeccionable : Iterable
 	{
 		int cuantos();
 		IComparable minimo();
